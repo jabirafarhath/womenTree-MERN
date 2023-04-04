@@ -31,13 +31,6 @@ cd womentree
 3. Install the dependencies:
 
 ```
-cd womentree
-
-```
-
-3. Install the dependencies:
-
-```
 npm install
 ```
 
