@@ -1,6 +1,8 @@
 import Layout from "@/components/layout";
 import Image from "next/image";
 import Head from "next/head";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   return (
@@ -15,13 +17,13 @@ export default function Home() {
             <p>connecting women with the world of work!</p>
             <div className="flex justify-center mt-4">
               <a
-                href=""
+                href="http://localhost:3001/auth/google"
                 className="py-2 px-3 bg-yellow-600 rounded-md mx-2 text-white hover:bg-yellow-700"
               >
                 Login
               </a>
               <a
-                href=""
+                href="http://localhost:3001/auth/google"
                 className="py-2 px-3 bg-gray-600 rounded-md text-white hover:bg-gray-700"
               >
                 Sign Up
