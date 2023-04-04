@@ -49,7 +49,25 @@ yarn
 
 ### Running the App
 
+Get your server running by following the command:
+
+```
+cd backend
+```
+
+```
+node index.js
+```
+
+The server will be running at `http://localhost:3001`.
+
+<br>
+
 To run the app, use the following command:
+
+```
+cd frontend
+```
 
 ```
 npm run dev
