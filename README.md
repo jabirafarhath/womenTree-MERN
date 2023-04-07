@@ -42,11 +42,13 @@ yarn
 
 ### Running the App
 
-Get your server running by following the command:
+Navigate into backend directory:
 
 ```
 cd backend
 ```
+
+Get your server running by following the command:
 
 ```
 node index.js
@@ -56,11 +58,13 @@ The server will be running at `http://localhost:3001`.
 
 <br>
 
-To run the app, use the following command:
+Navigate into frontend directory:
 
 ```
 cd frontend
 ```
+
+To run the app, use the following command:
 
 ```
 npm run dev
