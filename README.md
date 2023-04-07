@@ -37,7 +37,7 @@ npm install
 or
 
 ```
-yarn
+yarn install
 ```
 
 ### Running the App
