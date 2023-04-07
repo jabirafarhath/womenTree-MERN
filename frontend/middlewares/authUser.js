@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 export function useUser() {
-  const [user, setUser] = useState(false);
+  const [currentUser, setUser] = useState(false);
   const [error, setError] = useState(false);
   useEffect(() => {
     axios
@@ -16,5 +16,5 @@ export function useUser() {
         setError(err.response.data);
       });
   }, []);
-  return { user, error };
+  return { currentUser, error };
 }

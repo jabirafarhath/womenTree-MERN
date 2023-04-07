@@ -9,15 +9,15 @@ export default function UserNavbar() {
           </Link>
         </li>
         <li className="p-4 text-gray-100 hover:bg-gray-700 hover:text-white"><i className="mx-2 fa-solid fa-magnifying-glass"></i>
-          <a href="/user/search">Search</a>
+          <Link href="/user/search">Search</Link>
         </li>
         <li className="p-4 text-gray-100 hover:bg-gray-700 hover:text-white"><i className="mx-2 fa-solid fa-message"></i>
-          <a href="/user/messages">Messages</a>
+          <Link href="/user/messages">Messages</Link>
         </li>
         <li className="p-4 text-gray-100 hover:bg-gray-700 hover:text-white"><i className="mx-2 fa-solid fa-bell"></i>
-          <a href="/user/notifications">Notification</a>
+          <Link href="/user/notifications">Notification</Link>
         </li>
-        <li className="p-4 text-gray-100 hover:bg-gray-700 hover:text-white"><i className="mx-e2 fa-solid fa-user"></i>
+        <li className="p-4 text-gray-100 hover:bg-gray-700 hover:text-white"><i className="mx-2 fa-solid fa-user"></i>
           <Link href="/user/profile">Profile</Link>
         </li>
         <li className="p-4 text-gray-100 hover:bg-gray-700 hover:text-white"><i className="mx-2 fa-solid fa-right-from-bracket"></i>
