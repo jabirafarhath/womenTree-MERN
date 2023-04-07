@@ -5,7 +5,7 @@ router.post('/update',(req,res)=>{
     // console.log(req.user.id);
     // console.log(req.body);
     User.findByIdAndUpdate(req.user.id,req.body.values).then((result)=>{
-        res.redirect('http://localhost:3000/user/profile')
+        res.redirect('http://localhost:3000/edit')
     }).catch((err)=>{
         res.json(err)
     })
