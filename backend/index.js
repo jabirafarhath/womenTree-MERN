@@ -47,6 +47,16 @@ app.get("/getUsers", (req, res) => {
   });
 });
 
+app.get('/getuser/:userId',(req,res)=>{
+  const userId = req.params.userId
+  User.findById(userId).then((foundUser)=>{
+    // console.log(foundUser);
+    res.status(200).json(foundUser);
+  }).catch((err)=>{
+    res.status(500).json(err)
+  })
+})
+
 app.listen(3001, () => {
   console.log("Server started on port 3001");
 });
