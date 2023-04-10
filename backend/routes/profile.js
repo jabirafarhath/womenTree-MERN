@@ -1,21 +1,30 @@
-const router = require('express').Router();
-const User = require('../models/User')
+const router = require("express").Router();
+const { response } = require("express");
+const User = require("../models/User");
 
-router.post('/update',(req,res)=>{
-    // console.log(req.user.id);
-    // console.log(req.body);
-    User.findByIdAndUpdate(req.user.id,req.body.values).then((result)=>{
-        res.redirect('http://localhost:3000/edit')
-    }).catch((err)=>{
-        res.json(err)
+router.put("/:userId", (req, res) => {
+  User.findByIdAndUpdate(req.params.userId, req.body)
+    .then((result) => {
+      result
+        ? res.status(200).send("updated successfully")
+        : res.status(400).send("couldn't find data to update");
     })
-})
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
-router.get('/delete',(req,res)=>{
-    User.findByIdAndDelete(req.user.id).then((result)=>{
-        res.redirect('http://localhost:3000')
+router.delete("/delete", (req, res) => {
+  const userId = req.user.id;
+  User.findByIdAndDelete(userId)
+    .then((response) => {
+      res.status(200).send("user deleted");
     })
-})
-
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send(err);
+    });
+});
 
 module.exports = router;
