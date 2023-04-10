@@ -20,26 +20,31 @@ passport.use(
       //options for the strategy
       callbackURL: "http://localhost:3001/auth/google/callback",
       clientID: credentials.google.clientId,
-      clientSecret:credentials.google.clientSecret,
+      clientSecret: credentials.google.clientSecret,
     },
     (accessToken, refreshToken, profile, done) => {
-      User.findOne({googleId:profile.id}).then((currentUser)=>{
-        if(currentUser){
+      User.findOne({ googleId: profile.id })
+        .then((currentUser) => {
+          if (currentUser) {
             //already have user
-            done(null,currentUser);
-        }else{
+            done(null, currentUser);
+          } else {
             //create new user
             new User({
-                name:profile.displayName,
-                googleId:profile.id,
-                email:profile._json.email,
-            }).save().then((newUser)=>{
-                done(null,newUser);
+              name: profile.displayName,
+              googleId: profile.id,
+              email: profile._json.email,
+              image: profile._json.picture,
             })
-        }
-      }).then(()=>{
-        console.log("Logged In");
-      })
+              .save()
+              .then((newUser) => {
+                done(null, newUser);
+              });
+          }
+        })
+        .then(() => {
+          console.log("Logged In");
+        });
     }
   )
 );
