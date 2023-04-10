@@ -5,7 +5,7 @@ import { useAuthCheck } from "@/middlewares/authCheck";
 import ErrorLayout from "../error";
 
 export default function UserLayout({ children }) {
-  const { isAuthenticated, UserId, error } = useAuthCheck();
+  const { isAuthenticated, userId, error } = useAuthCheck();
 
   if (error) {
     return (
@@ -32,7 +32,7 @@ export default function UserLayout({ children }) {
 
         <div className="flex justify-between">
           <div className="bg-gray-800 w-1/4 h-screen fixed">
-            <UserNavbar />
+            <UserNavbar userId={userId}/>
           </div>
           <div
             className="p-6 w-3/4"

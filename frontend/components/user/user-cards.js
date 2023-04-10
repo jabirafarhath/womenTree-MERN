@@ -6,9 +6,9 @@ export default function UserCard({user}) {
     <div className="p-3.5 bg-white rounded-md m-1 ">
       <div className="card-image">
         <Image
-          alt=""
+          alt="user-img"
           className=""
-          src="https://pbs.twimg.com/profile_images/1623868562103500802/XOIKsyCe_400x400.jpg"
+          src={user.image}
           width={174}
           height={144}
         ></Image>
