@@ -40,16 +40,16 @@ const educationSchema = new mongoose.Schema({
 });
 
 const certificationSchema = mongoose.Schema({
-  name:{
-    type:String,
-    required:true
+  name: {
+    type: String,
+    required: true,
   },
-  year:{
-    type:Number,
-    min:1995,
-    max:2023,
-  }
-})
+  year: {
+    type: Number,
+    min: 1995,
+    max: 2023,
+  },
+});
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -80,39 +80,41 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: "username",
   },
-  image:{
-    type:String,
-    required:true
+  image: {
+    type: String,
+    required: true,
   },
   work: {
     type: [workSchema],
-    default:[]
-
+    default: [],
   },
   education: {
     type: [educationSchema],
-    default:[]
-
+    default: [],
   },
-  certifications:{
-    type:[certificationSchema],
-    default:[]
+  certifications: {
+    type: [certificationSchema],
+    default: [],
   },
-  languages:{
-    type:[{
-      type:String,
-      required:true
-    }],
-    default:[]
+  languages: {
+    type: [
+      {
+        language: {
+          type: String,
+          required: true,
+        },
+      },
+    ],
+    default: [],
   },
-  location:{
-    type:String,
-    default:""
+  location: {
+    type: String,
+    default: "",
   },
-  ratingOn10:{
-    type:Number,
-    default:0
-  }
+  ratingOn10: {
+    type: Number,
+    default: 0,
+  },
 });
 
 const User = mongoose.model("users", userSchema);
