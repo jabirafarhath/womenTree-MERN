@@ -13,7 +13,7 @@ export function useUser() {
         setUser(response.data.user);
       })
       .catch((err) => {
-        setError(err.response.data);
+        setError(err.response);
       });
   }, []);
   return { currentUser, error };
