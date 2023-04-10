@@ -2,12 +2,13 @@
 const nextConfig = {
   reactStrictMode: false,
   images: {
+    formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'pbs.twimg.com',
+        hostname: 'lh3.googleusercontent.com',
         port: '',
-        pathname: '/profile_images/1623868562103500802/XOIKsyCe_400x400.jpg',
+        pathname: '/a/*',
       },
     ],
   },
