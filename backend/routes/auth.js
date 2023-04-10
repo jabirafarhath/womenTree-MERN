@@ -1,8 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const passport = require("passport");
-const connection = require("../config/db");
-const { connect } = require("mongoose");
 
 //login with google
 router.get(
