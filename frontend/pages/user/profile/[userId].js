@@ -1,5 +1,3 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import UserLayout from "@/components/user/user-layout";
 import { useUser } from "@/middlewares/authUser";
 import Image from "next/image";
@@ -12,16 +10,13 @@ import Education from "@/components/user/edu/education";
 import Certifications from "@/components/user/cert/certifications";
 import Languages from "@/components/user/lang/languages";
 
-
 export default function Profile() {
   const router = useRouter();
   const { userId } = router.query;
   const { user, userError } = useFetchUser(userId);
   const { currentUser, authError } = useUser();
-  console.log(user);
-  console.log(currentUser);
+
   const isSame = user.email === currentUser.email ? true : false;
-  console.log(isSame);
 
   if (authError)
     return (
@@ -37,9 +32,9 @@ export default function Profile() {
         <div className="bg-white shadow rounded-lg overflow-hidden">
           <div className="flex md:justify-left justify-center  items-center h-48 bg-gray-800 relative">
             <Image
-              alt=""
+              alt="profile-pic"
               className="md:left-6 h-32 w-32 rounded-full absolute bottom-0 transform translate-y-1/2"
-              src="https://pbs.twimg.com/profile_images/1623868562103500802/XOIKsyCe_400x400.jpg"
+              src={user ? user.image : "/images/default-image.jpeg"}
               width={144}
               height={144}
             ></Image>
@@ -118,25 +113,66 @@ export default function Profile() {
         </div>
 
         {/* Work Experience Section */}
-        {user.work && user.work.length != 0 && (
-          <WorkExperience isSame={isSame} work={user.work} />
+        {user.work && user.work.length != 0 ? (
+          <WorkExperience isSame={isSame} works={user.work} userId={currentUser._id} />
+        ) : (
+        
+          <Link href={"/edit/work"}>
+            <div className="bg-white shadow rounded-lg overflow-hidden mt-6">
+              <div className="px-6 py-4">
+                <div className="flex justify-between">
+                  <h2 className="text-2xl font-bold mb-4">Add Work Experience <i className="fa-solid fa-plus"></i></h2>
+                </div>
+              </div>
+            </div>
+          </Link>
         )}
 
         {/* Education Section */}
-        {user.education && user.education.length != 0 && (
+        {user.education && user.education.length != 0 ? (
           <Education isSame={isSame} edu={user.education} />
+        ):(
+          <Link href={"/edit/education"}>
+            <div className="bg-white shadow rounded-lg overflow-hidden my-1">
+              <div className="px-6 py-4">
+                <div className="flex justify-between">
+                  <h2 className="text-2xl font-bold mb-4">Add Education <i className="fa-solid fa-plus"></i></h2>
+                </div>
+              </div>
+            </div>
+          </Link>
         )}
 
         {/* Certifications Section */}
-        {user.certifications && (user.certifications).length != 0 && (
+        {user.certifications && user.certifications.length != 0 ? (
           <Certifications
             isSame={isSame}
             certifications={user.certifications}
           />
+        ):(
+          <Link href={"/edit/certifcations"}>
+            <div className="bg-white shadow rounded-lg overflow-hidden my-1">
+              <div className="px-6 py-4">
+                <div className="flex justify-between">
+                  <h2 className="text-2xl font-bold mb-4">Add Certifications <i className="fa-solid fa-plus"></i></h2>
+                </div>
+              </div>
+            </div>
+          </Link>
         )}
         {/* Languages Section */}
-        {user.languages && (user.languages).length != 0 && (
+        {user.languages && user.languages.length != 0 ? (
           <Languages isSame={isSame} languages={user.languages} />
+        ):(
+          <Link href={"/edit/language"}>
+            <div className="bg-white shadow rounded-lg overflow-hidden my-1">
+              <div className="px-6 py-4">
+                <div className="flex justify-between">
+                  <h2 className="text-2xl font-bold mb-4">Add Languages <i className="fa-solid fa-plus"></i></h2>
+                </div>
+              </div>
+            </div>
+          </Link>
         )}
       </div>
     </UserLayout>
